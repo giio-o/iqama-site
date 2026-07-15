@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iqama — إقامة | مواقيت الصلاة والقرآن الكريم</title>
+<meta name="description" content="Iqama: prayer times, Quran reader, Athkar, mosque locator, Qibla compass and Islamic events. تطبيق إقامة: مواقيت الصلاة، القرآن الكريم، الأذكار، المساجد القريبة، اتجاه القبلة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#0f6f4f;--green-dark:#0a4f38;--gold:#c9a227;--bg:#f7f6f2;--ink:#1e2a26}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+  header{background:linear-gradient(135deg,var(--green-dark),var(--green));color:#fff;padding:4.5rem 1.5rem 3.5rem;text-align:center}
+  header h1{font-size:2.6rem;font-weight:900}
+  header p.tag{font-size:1.2rem;opacity:.92;max-width:620px;margin:0.6rem auto 0}
+  .lang-toggle{position:absolute;top:1rem;inset-inline-end:1rem;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:2rem;padding:.35rem 1rem;cursor:pointer;font-family:inherit;font-size:.9rem}
+  main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem}
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:1rem}
+  .card{background:#fff;border-radius:14px;padding:1.4rem;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+  .card .icon{font-size:1.8rem}
+  .card h3{color:var(--green);margin:.3rem 0 .2rem;font-size:1.15rem}
+  h2{color:var(--green-dark);font-size:1.6rem;margin:2.2rem 0 .6rem;text-align:center}
+  .badges{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.6rem}
+  .badge{background:#111;color:#fff;border-radius:10px;padding:.6rem 1.4rem;text-decoration:none;font-weight:600;opacity:.85}
+  .badge small{display:block;font-size:.7rem;font-weight:400}
+  footer{background:var(--green-dark);color:#fff;text-align:center;padding:1.6rem 1rem;margin-top:3rem;font-size:.95rem}
+  footer a{color:#ffe9a8;text-decoration:none;margin:0 .6rem}
+</style>
+</head>
+<body>
+<header style="position:relative">
+  <button class="lang-toggle" onclick="toggleLang()" id="langBtn">English</button>
+  <h1>Iqama — إقامة</h1>
+  <p class="tag" data-ar="رفيقك اليومي للصلاة: مواقيت دقيقة، قرآن كريم، أذكار، مساجد قريبة، واتجاه القبلة." data-en="Your daily prayer companion: accurate prayer times, Quran, Athkar, nearby mosques, and Qibla direction.">رفيقك اليومي للصلاة: مواقيت دقيقة، قرآن كريم، أذكار، مساجد قريبة، واتجاه القبلة.</p>
+  <div class="badges">
+    <a class="badge" href="#" id="ios-badge"><small data-ar="قريباً على" data-en="Coming soon on">قريباً على</small>App Store</a>
+    <a class="badge" href="#" id="android-badge"><small data-ar="قريباً على" data-en="Coming soon on">قريباً على</small>Google Play</a>
+  </div>
+</header>
+<main>
+  <h2 data-ar="المميزات" data-en="Features">المميزات</h2>
+  <div class="features">
+    <div class="card"><div class="icon">🕌</div><h3 data-ar="مواقيت الصلاة" data-en="Prayer Times">مواقيت الصلاة</h3><p data-ar="مواقيت دقيقة حسب موقعك مع إشعارات للصلاة القادمة." data-en="Accurate times for your location with next-prayer notifications.">مواقيت دقيقة حسب موقعك مع إشعارات للصلاة القادمة.</p></div>
+    <div class="card"><div class="icon">📖</div><h3 data-ar="القرآن الكريم" data-en="Quran Reader">القرآن الكريم</h3><p data-ar="مصحف كامل مع التفسير وخطة ختم القرآن." data-en="Full Mushaf with Tafseer and a Khatma completion planner.">مصحف كامل مع التفسير وخطة ختم القرآن.</p></div>
+    <div class="card"><div class="icon">📿</div><h3 data-ar="الأذكار" data-en="Athkar">الأذكار</h3><p data-ar="أذكار الصباح والمساء مع تلاوة صوتية." data-en="Morning and evening supplications with audio playback.">أذكار الصباح والمساء مع تلاوة صوتية.</p></div>
+    <div class="card"><div class="icon">🧭</div><h3 data-ar="اتجاه القبلة" data-en="Qibla Compass">اتجاه القبلة</h3><p data-ar="بوصلة دقيقة تحدد اتجاه الكعبة المشرفة." data-en="A precise compass pointing toward the Kaaba.">بوصلة دقيقة تحدد اتجاه الكعبة المشرفة.</p></div>
+    <div class="card"><div class="icon">📍</div><h3 data-ar="المساجد القريبة" data-en="Mosque Locator">المساجد القريبة</h3><p data-ar="اعثر على المساجد القريبة منك على الخريطة." data-en="Find mosques near you on the map.">اعثر على المساجد القريبة منك على الخريطة.</p></div>
+    <div class="card"><div class="icon">🗓️</div><h3 data-ar="المناسبات الإسلامية" data-en="Islamic Events">المناسبات الإسلامية</h3><p data-ar="تقويم هجري بالمناسبات والأيام الفضيلة." data-en="Hijri calendar with Islamic events and blessed days.">تقويم هجري بالمناسبات والأيام الفضيلة.</p></div>
+  </div>
+</main>
+<footer>
+  <div>
+    <a href="privacy.html" data-ar="سياسة الخصوصية" data-en="Privacy Policy">سياسة الخصوصية</a> ·
+    <a href="support.html" data-ar="الدعم" data-en="Support">الدعم</a>
+  </div>
+  <div style="margin-top:.5rem;opacity:.8">© 2026 Iqama</div>
+</footer>
+<script>
+function applyLang(lang){
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  document.querySelectorAll('[data-ar]').forEach(el=>{
+    const t=el.getAttribute('data-'+lang); if(t) replaceText(el,t);
+  });
+  document.getElementById('langBtn').textContent=lang==='ar'?'English':'العربية';
+  try{localStorage.setItem('iqamaLang',lang)}catch(e){}
+}
+function replaceText(el,t){
+  // Replace only text nodes, keep child elements (for badges with <small>)
+  for(const n of el.childNodes){ if(n.nodeType===3&&n.nodeValue.trim()){ n.nodeValue=t; return; } }
+  el.textContent=t;
+}
+function toggleLang(){ applyLang(document.documentElement.lang==='ar'?'en':'ar'); }
+try{ const s=localStorage.getItem('iqamaLang'); if(s&&s!=='ar') applyLang(s); }catch(e){}
+</script>
+</body>
+</html>
