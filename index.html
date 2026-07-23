@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-title-ar="Mawqoot — مَوْقُوت | مواقيت الصلاة والقرآن الكريم" data-title-en="Mawqoot — Prayer Times, Quran &amp; Athkar">
+<html lang="ar" dir="rtl" data-title-ar="Mawqoot — مَوْقُوت | الصلاة، القرآن، والمساجد" data-title-en="Mawqoot — Prayer Times, Quran, Mosques &amp; Community">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mawqoot — مَوْقُوت | مواقيت الصلاة والقرآن الكريم</title>
-<meta name="description" content="Mawqoot: prayer times, Quran reader, Athkar, mosque locator, Qibla compass and Islamic events. تطبيق مَوْقُوت: مواقيت الصلاة، القرآن الكريم، الأذكار، المساجد القريبة، اتجاه القبلة.">
+<title>Mawqoot — مَوْقُوت | الصلاة، القرآن، والمساجد</title>
+<meta name="description" content="Mawqoot unifies prayer times, Quran, Athkar, mosque details, Qibla direction, and community updates in one calm experience. تطبيق مَوْقُوت يجمع مواقيت الصلاة والقرآن والأذكار والمساجد واتجاه القبلة في مكان واحد.">
 <meta name="theme-color" content="#0a4f38">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230f6f4f' d='M14.5 3.5A8 8 0 1 0 20.5 15 6.5 6.5 0 0 1 14.5 3.5Z'/%3E%3Cpath fill='%23c9a227' d='m18.5 5 .6 1.4L20.5 7l-1.4.6-.6 1.4-.6-1.4L16.5 7l1.4-.6.6-1.4Z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,9 @@
       <span>Mawqoot</span>
     </a>
     <nav class="nav-links" aria-label="Primary">
+      <a href="#story" data-ar="القصة" data-en="Story">القصة</a>
       <a href="#features" data-ar="المميزات" data-en="Features">المميزات</a>
+      <a href="#trust" data-ar="الثقة" data-en="Trust">الثقة</a>
       <a href="privacy.html" data-ar="الخصوصية" data-en="Privacy">الخصوصية</a>
       <a href="support.html" data-ar="الدعم" data-en="Support">الدعم</a>
     </nav>
@@ -46,27 +48,106 @@
       <span class="orb orb-3"></span>
     </div>
     <div class="container">
-      <div class="hero-content reveal">
-        <span class="eyebrow" data-ar="رفيقك اليومي للعبادة" data-en="Your daily worship companion">رفيقك اليومي للعبادة</span>
-        <h1>Mawqoot — <span class="gradient-text">مَوْقُوت</span></h1>
-        <p class="tag" data-ar="رفيقك اليومي للصلاة: مواقيت دقيقة، قرآن كريم، أذكار، مساجد قريبة، واتجاه القبلة." data-en="Your daily prayer companion: accurate prayer times, Quran, Athkar, nearby mosques, and Qibla direction.">رفيقك اليومي للصلاة: مواقيت دقيقة، قرآن كريم، أذكار، مساجد قريبة، واتجاه القبلة.</p>
+      <div class="hero-layout">
+        <div class="hero-copy reveal">
+          <span class="eyebrow" data-ar="رفيق يومي للعبادة بصورة أكثر وضوحاً" data-en="A clearer daily worship companion">رفيق يومي للعبادة بصورة أكثر وضوحاً</span>
+          <h1 data-ar="من مواقيت الصلاة إلى القرآن الكريم، كل ما تحتاجه في مكان واحد" data-en="From prayer times to the Quran, everything you need in one place">من مواقيت الصلاة إلى القرآن الكريم، كل ما تحتاجه في مكان واحد</h1>
+          <p class="tag" data-ar="تجربة واحدة تجمع المواقيت الدقيقة، الأذكار، المساجد القريبة، واتجاه القبلة مع حضور أكثر فخامة ووضوح." data-en="One calm experience that brings together accurate prayer times, Athkar, nearby mosques, and Qibla direction with a more premium feel.">تجربة واحدة تجمع المواقيت الدقيقة، الأذكار، المساجد القريبة، واتجاه القبلة مع حضور أكثر فخامة ووضوح.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#features" data-ar="استكشف التجربة" data-en="Explore the experience">استكشف التجربة</a>
+          <a class="btn btn-secondary" href="support.html" data-ar="تواصل مع الدعم" data-en="Contact support">تواصل مع الدعم</a>
+        </div>
+
+        <div class="hero-status-grid">
+          <div class="hero-status-card hero-status-card--countdown">
+            <span class="hero-status-label" data-ar="الصلاة القادمة الآن" data-en="Next prayer now">الصلاة القادمة الآن</span>
+            <strong id="countdownPrayer">العصر</strong>
+            <div class="hero-countdown">
+              <span id="countdownTime">00:00:00</span>
+              <div class="hero-countdown-bar" aria-hidden="true"><span id="countdownFill"></span></div>
+            </div>
+          </div>
+          <div class="hero-status-card">
+            <span class="hero-status-label" data-ar="عرض تفاعلي" data-en="Interactive demo">عرض تفاعلي</span>
+            <strong data-ar="بدّل بين المكوّنات" data-en="Switch between features">بدّل بين المكوّنات</strong>
+            <p data-ar="اضغط على الأزرار لتبديل ما تعرضه الهواتف." data-en="Tap the buttons to change what the phones show.">اضغط على الأزرار لتبديل ما تعرضه الهواتف.</p>
+          </div>
+        </div>
+
+        <div class="hero-demo-switcher" role="tablist" aria-label="Hero demo switcher">
+          <button class="demo-pill is-active" type="button" data-demo="prayer" data-ar="مواقيت الصلاة" data-en="Prayer Times">مواقيت الصلاة</button>
+          <button class="demo-pill" type="button" data-demo="quran" data-ar="القرآن الكريم" data-en="Quran">القرآن الكريم</button>
+          <button class="demo-pill" type="button" data-demo="mosque" data-ar="المساجد" data-en="Mosques">المساجد</button>
+          <button class="demo-pill" type="button" data-demo="community" data-ar="المجتمع" data-en="Community">المجتمع</button>
+        </div>
 
         <div class="badges">
           <a class="btn btn-store" href="#" id="ios-badge" aria-label="Coming soon on the App Store">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.7 12.3c0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.6.9s-1.9-.9-3.1-.8c-1.6 0-3.1.9-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.7c1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.6-1-2.6-3.9Z"/><path d="M14.8 5c.6-.8 1-1.9.9-3-.9.1-2 .6-2.6 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2-.5 2.7-1.3Z"/></svg>
-            <span class="store-text"><small data-ar="قريباً على" data-en="Coming soon on">قريباً على</small><span class="store-name">App Store</span></span>
-          </a>
-          <a class="btn btn-store" href="#" id="android-badge" aria-label="Coming soon on Google Play">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 3.5v17l14-8.5-14-8.5Z"/></svg>
-            <span class="store-text"><small data-ar="قريباً على" data-en="Coming soon on">قريباً على</small><span class="store-name">Google Play</span></span>
-          </a>
+              <span class="store-text"><small data-ar="قريباً على" data-en="Coming soon on">قريباً على</small><span class="store-name">App Store</span></span>
+            </a>
+            <a class="btn btn-store" href="#" id="android-badge" aria-label="Coming soon on Google Play">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 3.5v17l14-8.5-14-8.5Z"/></svg>
+              <span class="store-text"><small data-ar="قريباً على" data-en="Coming soon on">قريباً على</small><span class="store-name">Google Play</span></span>
+            </a>
+          </div>
+
+          <div class="hero-chips" aria-hidden="true">
+            <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M5 20v-6a7 7 0 0 1 14 0v6"/><path d="M12 6V3"/><path d="M10.5 3.5 12 2l1.5 1.5"/><path d="M9 20v-4a3 3 0 0 1 6 0v4"/></svg><span data-ar="مواقيت الصلاة" data-en="Prayer Times">مواقيت الصلاة</span></span>
+            <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c-1.6-1.3-3.6-2-6-2v13c2.4 0 4.4.7 6 2 1.6-1.3 3.6-2 6-2v-13c-2.4 0-4.4.7-6 2Z"/><path d="M12 6.5v13"/></svg><span data-ar="القرآن الكريم" data-en="Quran">القرآن الكريم</span></span>
+            <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15 9-4.5 1.5L9 15l4.5-1.5L15 9Z"/></svg><span data-ar="اتجاه القبلة" data-en="Qibla">اتجاه القبلة</span></span>
+            <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg><span data-ar="المساجد القريبة" data-en="Mosques">المساجد القريبة</span></span>
+          </div>
         </div>
 
-        <div class="hero-chips" aria-hidden="true">
-          <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M5 20v-6a7 7 0 0 1 14 0v6"/><path d="M12 6V3"/><path d="M10.5 3.5 12 2l1.5 1.5"/><path d="M9 20v-4a3 3 0 0 1 6 0v4"/></svg><span data-ar="مواقيت الصلاة" data-en="Prayer Times">مواقيت الصلاة</span></span>
-          <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c-1.6-1.3-3.6-2-6-2v13c2.4 0 4.4.7 6 2 1.6-1.3 3.6-2 6-2v-13c-2.4 0-4.4.7-6 2Z"/><path d="M12 6.5v13"/></svg><span data-ar="القرآن الكريم" data-en="Quran">القرآن الكريم</span></span>
-          <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15 9-4.5 1.5L9 15l4.5-1.5L15 9Z"/></svg><span data-ar="اتجاه القبلة" data-en="Qibla">اتجاه القبلة</span></span>
-          <span class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg><span data-ar="المساجد القريبة" data-en="Mosques">المساجد القريبة</span></span>
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="phone-mockup phone-mockup--back">
+            <div class="phone-screen">
+              <div class="phone-topbar">
+                <span>9:41</span>
+                <span class="phone-status">
+                  <span></span><span></span><span></span>
+                </span>
+              </div>
+              <div class="screen-title" id="demoBackTitle" data-ar="القرآن الكريم" data-en="Quran Reader">القرآن الكريم</div>
+              <div class="screen-card screen-card--light">
+                <span class="screen-pill" id="demoBackPill" data-ar="الورد اليومي" data-en="Daily portion">الورد اليومي</span>
+                <strong id="demoBackPrimary" data-ar="سورة الكهف" data-en="Surah Al-Kahf">سورة الكهف</strong>
+                <p id="demoBackBody" data-ar="حفظ هادئ مع تلاوة واضحة ومتابعة تقدّم بسيطة." data-en="A calm reading flow with clear recitation and progress tracking.">حفظ هادئ مع تلاوة واضحة ومتابعة تقدّم بسيطة.</p>
+              </div>
+              <div class="screen-list" id="demoBackList">
+                <span><i></i> <strong data-ar="الأذكار" data-en="Athkar">الأذكار</strong> <small data-ar="الصباح والمساء" data-en="Morning and evening">الصباح والمساء</small></span>
+                <span><i></i> <strong data-ar="المساجد" data-en="Mosques">المساجد</strong> <small data-ar="قريبة منك" data-en="Near you">قريبة منك</small></span>
+              </div>
+            </div>
+          </div>
+          <div class="phone-mockup phone-mockup--front">
+            <div class="phone-screen">
+              <div class="phone-topbar">
+                <span>9:41</span>
+                <span class="phone-status">
+                  <span></span><span></span><span></span>
+                </span>
+              </div>
+              <div class="screen-title" id="demoFrontTitle" data-ar="مواقيت الصلاة" data-en="Prayer Times">مواقيت الصلاة</div>
+              <div class="next-prayer" id="demoFrontPanel">
+                <span class="screen-pill gold" id="demoFrontPill" data-ar="الصلاة القادمة" data-en="Next prayer">الصلاة القادمة</span>
+                <strong id="demoFrontPrimary" data-ar="العصر" data-en="Asr">العصر</strong>
+                <p id="demoFrontBody" data-ar="متبقي 01:24" data-en="01:24 remaining">متبقي 01:24</p>
+              </div>
+              <div class="time-list" id="demoTimeList">
+                <div><span data-ar="الفجر" data-en="Fajr">الفجر</span><strong>04:07</strong></div>
+                <div><span data-ar="الظهر" data-en="Dhuhr">الظهر</span><strong>12:42</strong></div>
+                <div class="time-list--active"><span data-ar="العصر" data-en="Asr">العصر</span><strong>15:58</strong></div>
+                <div><span data-ar="المغرب" data-en="Maghrib">المغرب</span><strong>19:43</strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-float-card" id="heroFloatCard">
+            <span class="hero-float-label" id="heroFloatLabel" data-ar="دقة محسنة" data-en="Refined accuracy">دقة محسنة</span>
+            <strong id="heroFloatText" data-ar="تجربة موحّدة ومريحة" data-en="One unified, calmer experience">تجربة موحّدة ومريحة</strong>
+          </div>
         </div>
       </div>
     </div>
@@ -77,45 +158,186 @@
     </a>
   </section>
 
+  <section class="section section-alt" id="story">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-ar="لماذا Mawqoot؟" data-en="Why Mawqoot?">لماذا Mawqoot؟</span>
+        <h2 data-ar="بدل التشتت بين التطبيقات، اجعل العبادة اليومية في مكان واحد" data-en="Instead of jumping between apps, keep daily worship in one place">بدل التشتت بين التطبيقات، اجعل العبادة اليومية في مكان واحد</h2>
+        <p data-ar="نفس الهوية، لكن بتجربة أكثر وضوحاً وهدوءاً تساعد الزائر على فهم Mawqoot خلال ثوانٍ قليلة." data-en="Same identity, but with a clearer and calmer experience that helps visitors understand Mawqoot in seconds.">نفس الهوية، لكن بتجربة أكثر وضوحاً وهدوءاً تساعد الزائر على فهم Mawqoot خلال ثوانٍ قليلة.</p>
+      </div>
+
+      <div class="story-panel reveal">
+        <div class="story-block">
+          <span class="story-label" data-ar="اليوم" data-en="Today">اليوم</span>
+          <p data-ar="مواقيت الصلاة، القرآن، معلومات المساجد، وتحديثات المجتمع تعيش في تطبيقات متفرقة ومنفصلة." data-en="Prayer times, Quran, mosque information, and community updates live across separate, disconnected apps.">مواقيت الصلاة، القرآن، معلومات المساجد، وتحديثات المجتمع تعيش في تطبيقات متفرقة ومنفصلة.</p>
+        </div>
+        <div class="story-bridge" aria-hidden="true">
+          <span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 14 0"/><path d="m13 6 6 6-6 6"/></svg>
+        </div>
+        <div class="story-block story-block--solution">
+          <span class="story-label" data-ar="Mawqoot" data-en="Mawqoot">Mawqoot</span>
+          <p data-ar="حل واحد يجمع كل ذلك في مساحة هادئة، أكثر فخامة، وأسهل في الفهم من أول زيارة." data-en="A single answer that brings everything together in a calmer, more premium space that is easy to understand at first glance.">حل واحد يجمع كل ذلك في مساحة هادئة، أكثر فخامة، وأسهل في الفهم من أول زيارة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="features">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow" data-ar="المميزات" data-en="Features">المميزات</span>
-        <h2 data-ar="كل ما تحتاجه لعبادتك اليومية" data-en="Everything you need for daily worship">كل ما تحتاجه لعبادتك اليومية</h2>
-        <p data-ar="تجربة متكاملة تجمع الصلاة والقرآن والأذكار في مكان واحد." data-en="A complete experience bringing prayer, Quran, and Athkar together in one place.">تجربة متكاملة تجمع الصلاة والقرآن والأذكار في مكان واحد.</p>
+        <h2 data-ar="مجموعات أوضح، أولوية أعلى، ولمسة أكثر فخامة" data-en="Clearer groups, better priority, and a more premium finish">مجموعات أوضح، أولوية أعلى، ولمسة أكثر فخامة</h2>
+        <p data-ar="قسم المميزات الآن يبرز الأهم أولاً ويقدّم البقية في مجموعات أسهل للقراءة والاستكشاف." data-en="The features section now highlights the most important experiences first and groups the rest for easier scanning.">قسم المميزات الآن يبرز الأهم أولاً ويقدّم البقية في مجموعات أسهل للقراءة والاستكشاف.</p>
       </div>
 
-      <div class="features-grid stagger">
-        <div class="card reveal">
-          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M5 20v-6a7 7 0 0 1 14 0v6"/><path d="M12 6V3"/><path d="M10.5 3.5 12 2l1.5 1.5"/><path d="M9 20v-4a3 3 0 0 1 6 0v4"/></svg></div>
-          <h3 data-ar="مواقيت الصلاة" data-en="Prayer Times">مواقيت الصلاة</h3>
-          <p data-ar="مواقيت دقيقة حسب موقعك مع إشعارات للصلاة القادمة." data-en="Accurate times for your location with next-prayer notifications.">مواقيت دقيقة حسب موقعك مع إشعارات للصلاة القادمة.</p>
-        </div>
-        <div class="card reveal">
-          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c-1.6-1.3-3.6-2-6-2v13c2.4 0 4.4.7 6 2 1.6-1.3 3.6-2 6-2v-13c-2.4 0-4.4.7-6 2Z"/><path d="M12 6.5v13"/></svg></div>
-          <h3 data-ar="القرآن الكريم" data-en="Quran Reader">القرآن الكريم</h3>
-          <p data-ar="مصحف كامل مع التفسير وخطة ختم القرآن." data-en="Full Mushaf with Tafseer and a Khatma completion planner.">مصحف كامل مع التفسير وخطة ختم القرآن.</p>
-        </div>
-        <div class="card reveal">
-          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 13c1.7 3.4 4.8 6 7.5 6s5.8-2.6 7.5-6"/><circle cx="5.5" cy="11.3" r="1.3"/><circle cx="8.7" cy="14.6" r="1.3"/><circle cx="12" cy="15.8" r="1.3"/><circle cx="15.3" cy="14.6" r="1.3"/><circle cx="18.5" cy="11.3" r="1.3"/><path d="M12 15.8v3.7"/><circle cx="12" cy="20.6" r="1.1"/></svg></div>
-          <h3 data-ar="الأذكار" data-en="Athkar">الأذكار</h3>
-          <p data-ar="أذكار الصباح والمساء مع تلاوة صوتية." data-en="Morning and evening supplications with audio playback.">أذكار الصباح والمساء مع تلاوة صوتية.</p>
-        </div>
-        <div class="card reveal">
-          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15 9-4.5 1.5L9 15l4.5-1.5L15 9Z"/></svg></div>
-          <h3 data-ar="اتجاه القبلة" data-en="Qibla Compass">اتجاه القبلة</h3>
-          <p data-ar="بوصلة دقيقة تحدد اتجاه الكعبة المشرفة." data-en="A precise compass pointing toward the Kaaba.">بوصلة دقيقة تحدد اتجاه الكعبة المشرفة.</p>
-        </div>
-        <div class="card reveal">
-          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg></div>
-          <h3 data-ar="المساجد القريبة" data-en="Mosque Locator">المساجد القريبة</h3>
-          <p data-ar="اعثر على المساجد القريبة منك على الخريطة." data-en="Find mosques near you on the map.">اعثر على المساجد القريبة منك على الخريطة.</p>
-        </div>
-        <div class="card reveal">
-          <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/><circle cx="8.2" cy="14.2" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="14.2" r="1" fill="currentColor" stroke="none"/><circle cx="15.8" cy="14.2" r="1" fill="currentColor" stroke="none"/><circle cx="8.2" cy="17.6" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="17.6" r="1" fill="currentColor" stroke="none"/></svg></div>
-          <h3 data-ar="المناسبات الإسلامية" data-en="Islamic Events">المناسبات الإسلامية</h3>
-          <p data-ar="تقويم هجري بالمناسبات والأيام الفضيلة." data-en="Hijri calendar with Islamic events and blessed days.">تقويم هجري بالمناسبات والأيام الفضيلة.</p>
-        </div>
+      <div class="feature-groups stagger">
+        <article class="feature-group feature-group--featured reveal">
+          <div class="feature-group-head">
+            <span class="eyebrow" data-ar="الأولوية الأولى" data-en="Priority one">الأولوية الأولى</span>
+            <h3 data-ar="مواقيت الصلاة والقرآن" data-en="Prayer Times and Quran">مواقيت الصلاة والقرآن</h3>
+            <p data-ar="أهم تجربتين في Mawqoot تظهران أولاً، لأنهما البداية اليومية لأي زيارة." data-en="The two most important experiences in Mawqoot appear first because they anchor the daily routine.">أهم تجربتين في Mawqoot تظهران أولاً، لأنهما البداية اليومية لأي زيارة.</p>
+          </div>
+          <div class="feature-group-cards">
+            <div class="mini-feature-card">
+              <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M5 20v-6a7 7 0 0 1 14 0v6"/><path d="M12 6V3"/><path d="M10.5 3.5 12 2l1.5 1.5"/><path d="M9 20v-4a3 3 0 0 1 6 0v4"/></svg></div>
+              <h4 data-ar="مواقيت الصلاة" data-en="Prayer Times">مواقيت الصلاة</h4>
+              <p data-ar="مواقيت دقيقة مع تدرج بصري يوضح الصلاة القادمة بوضوح." data-en="Accurate times with a visual cue for the next prayer.">مواقيت دقيقة مع تدرج بصري يوضح الصلاة القادمة بوضوح.</p>
+            </div>
+            <div class="mini-feature-card">
+              <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c-1.6-1.3-3.6-2-6-2v13c2.4 0 4.4.7 6 2 1.6-1.3 3.6-2 6-2v-13c-2.4 0-4.4.7-6 2Z"/><path d="M12 6.5v13"/></svg></div>
+              <h4 data-ar="القرآن الكريم" data-en="Quran Reader">القرآن الكريم</h4>
+              <p data-ar="مصحف واضح مع تفسير وخطة ختم منظمة." data-en="A clean Mushaf with Tafseer and a guided completion plan.">مصحف واضح مع تفسير وخطة ختم منظمة.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature-group reveal">
+          <div class="feature-group-head">
+            <span class="eyebrow" data-ar="الإرشاد" data-en="Guidance">الإرشاد</span>
+            <h3 data-ar="الأذكار واتجاه القبلة" data-en="Athkar and Qibla">الأذكار واتجاه القبلة</h3>
+            <p data-ar="خدمات يومية أسهل في الوصول وأكثر انسجاماً مع الهوية البصرية." data-en="Daily tools that are easier to reach and more consistent visually.">خدمات يومية أسهل في الوصول وأكثر انسجاماً مع الهوية البصرية.</p>
+          </div>
+          <div class="feature-group-cards">
+            <div class="mini-feature-card">
+              <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 13c1.7 3.4 4.8 6 7.5 6s5.8-2.6 7.5-6"/><circle cx="5.5" cy="11.3" r="1.3"/><circle cx="8.7" cy="14.6" r="1.3"/><circle cx="12" cy="15.8" r="1.3"/><circle cx="15.3" cy="14.6" r="1.3"/><circle cx="18.5" cy="11.3" r="1.3"/><path d="M12 15.8v3.7"/><circle cx="12" cy="20.6" r="1.1"/></svg></div>
+              <h4 data-ar="الأذكار" data-en="Athkar">الأذكار</h4>
+              <p data-ar="أذكار الصباح والمساء مع تلاوة صوتية مريحة." data-en="Morning and evening supplications with comfortable audio playback.">أذكار الصباح والمساء مع تلاوة صوتية مريحة.</p>
+            </div>
+            <div class="mini-feature-card">
+              <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15 9-4.5 1.5L9 15l4.5-1.5L15 9Z"/></svg></div>
+              <h4 data-ar="اتجاه القبلة" data-en="Qibla Compass">اتجاه القبلة</h4>
+              <p data-ar="بوصلة دقيقة تساعد المستخدم على التوجه فوراً." data-en="A precise compass that helps users orient quickly.">بوصلة دقيقة تساعد المستخدم على التوجه فوراً.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature-group reveal">
+          <div class="feature-group-head">
+            <span class="eyebrow" data-ar="المجتمع" data-en="Community">المجتمع</span>
+            <h3 data-ar="المساجد القريبة والمناسبات الإسلامية" data-en="Nearby mosques and Islamic events">المساجد القريبة والمناسبات الإسلامية</h3>
+            <p data-ar="الجزء الذي يربط Mawqoot بالعالم من حول المستخدم، من الخريطة إلى التقويم." data-en="The part that connects Mawqoot to the world around the user, from maps to the calendar.">الجزء الذي يربط Mawqoot بالعالم من حول المستخدم، من الخريطة إلى التقويم.</p>
+          </div>
+          <div class="feature-group-cards">
+            <div class="mini-feature-card">
+              <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg></div>
+              <h4 data-ar="المساجد القريبة" data-en="Nearby Mosques">المساجد القريبة</h4>
+              <p data-ar="عرض أوضح للمساجد القريبة والاتصال بالمكان المناسب أسرع." data-en="Clearer nearby mosque discovery with faster access to the right place.">عرض أوضح للمساجد القريبة والاتصال بالمكان المناسب أسرع.</p>
+            </div>
+            <div class="mini-feature-card">
+              <div class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/><circle cx="8.2" cy="14.2" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="14.2" r="1" fill="currentColor" stroke="none"/><circle cx="15.8" cy="14.2" r="1" fill="currentColor" stroke="none"/><circle cx="8.2" cy="17.6" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="17.6" r="1" fill="currentColor" stroke="none"/></svg></div>
+              <h4 data-ar="المناسبات الإسلامية" data-en="Islamic Events">المناسبات الإسلامية</h4>
+              <p data-ar="تقويم هجري يقدّم المناسبات والأيام الفضيلة بشكل ألطف." data-en="A Hijri calendar that presents events and blessed days more elegantly.">تقويم هجري يقدّم المناسبات والأيام الفضيلة بشكل ألطف.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="trust">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-ar="الثقة والاطمئنان" data-en="Trust and reassurance">الثقة والاطمئنان</span>
+        <h2 data-ar="أربع رسائل قصيرة تطمئن الزائر سريعاً" data-en="Four short signals that reassure visitors quickly">أربع رسائل قصيرة تطمئن الزائر سريعاً</h2>
+        <p data-ar="هذا القسم يضيف مصداقية مختصرة من دون إطالة أو تحويل الصفحة إلى وثيقة رسمية." data-en="This section adds concise credibility without turning the page into a long policy document.">هذا القسم يضيف مصداقية مختصرة من دون إطالة أو تحويل الصفحة إلى وثيقة رسمية.</p>
+      </div>
+
+      <div class="trust-grid stagger">
+        <article class="trust-card reveal">
+          <div class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.6 7.8 8 9 4.4-1.2 8-4 8-9V6l-8-3Z"/></svg></div>
+          <h3 data-ar="الخصوصية أولاً" data-en="Privacy first">الخصوصية أولاً</h3>
+          <p data-ar="سياسة واضحة، جمع محدود للبيانات، وتجربة مبنية على الثقة." data-en="Clear policies, limited data collection, and a trust-first experience.">سياسة واضحة، جمع محدود للبيانات، وتجربة مبنية على الثقة.</p>
+        </article>
+        <article class="trust-card reveal">
+          <div class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M5 20v-6a7 7 0 0 1 14 0v6"/><path d="M12 6V3"/><path d="M10.5 3.5 12 2l1.5 1.5"/></svg></div>
+          <h3 data-ar="دعم مباشر" data-en="Direct support">دعم مباشر</h3>
+          <p data-ar="طريقة سهلة للوصول إلى الفريق عندما يحتاج الزائر إلى إجابة." data-en="A simple way to reach the team whenever a visitor needs help.">طريقة سهلة للوصول إلى الفريق عندما يحتاج الزائر إلى إجابة.</p>
+        </article>
+        <article class="trust-card reveal">
+          <div class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg></div>
+          <h3 data-ar="أمان وموثوقية" data-en="Secure and reliable">أمان وموثوقية</h3>
+          <p data-ar="تصميم يوازن بين البساطة، الوضوح، والحماية العملية." data-en="Design that balances simplicity, clarity, and practical protection.">تصميم يوازن بين البساطة، الوضوح، والحماية العملية.</p>
+        </article>
+        <article class="trust-card reveal">
+          <div class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19c3-7 13-7 16 0"/><circle cx="12" cy="8" r="3"/><path d="M12 3v2"/></svg></div>
+          <h3 data-ar="رؤية مستقبلية" data-en="Future vision">رؤية مستقبلية</h3>
+          <p data-ar="التجربة مبنية لتتوسع بهدوء مع الوقت من دون فقدان هويتها." data-en="Built to grow carefully over time without losing its identity.">التجربة مبنية لتتوسع بهدوء مع الوقت من دون فقدان هويتها.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="future">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-ar="أفكار مستقبلية" data-en="Future ideas">أفكار مستقبلية</span>
+        <h2 data-ar="نماذج حيّة صغيرة للأفكار الاختيارية" data-en="Small live previews for the optional ideas">نماذج حيّة صغيرة للأفكار الاختيارية</h2>
+        <p data-ar="بدل ترك الأفكار الاختيارية في قائمة فقط، وضعنا لها معاينات خفيفة تحافظ على بساطة الصفحة." data-en="Instead of leaving optional ideas in a list, we turned them into light previews that keep the page simple.">بدل ترك الأفكار الاختيارية في قائمة فقط، وضعنا لها معاينات خفيفة تحافظ على بساطة الصفحة.</p>
+      </div>
+
+      <div class="future-grid stagger">
+        <article class="future-card future-card--countdown reveal">
+          <span class="future-kicker" data-ar="تجربة حية" data-en="Live moment">تجربة حية</span>
+          <h3 data-ar="المؤقت اليومي للصلاة" data-en="Daily prayer countdown">المؤقت اليومي للصلاة</h3>
+          <p data-ar="عداد مباشر يتحدث كل ثانية حتى الصلاة التالية." data-en="A live counter that updates every second until the next prayer.">عداد مباشر يتحدث كل ثانية حتى الصلاة التالية.</p>
+          <div class="future-counter">
+            <strong id="futureCountdown">00:00:00</strong>
+            <span id="futurePrayer" data-ar="العصر" data-en="Asr">العصر</span>
+          </div>
+        </article>
+
+        <article class="future-card future-card--map reveal">
+          <span class="future-kicker" data-ar="خريطة المصلى" data-en="Mosque map">خريطة المصلى</span>
+          <h3 data-ar="معاينة خفيفة للمساجد القريبة" data-en="A lightweight preview of nearby mosques">معاينة خفيفة للمساجد القريبة</h3>
+          <div class="map-preview" aria-hidden="true">
+            <span class="map-grid"></span>
+            <span class="map-pin pin-1"></span>
+            <span class="map-pin pin-2"></span>
+            <span class="map-pin pin-3"></span>
+          </div>
+        </article>
+
+        <article class="future-card future-card--ecosystem reveal">
+          <span class="future-kicker" data-ar="النظام البيئي" data-en="Ecosystem">النظام البيئي</span>
+          <h3 data-ar="تدفّق حي بين عناصر Mawqoot" data-en="A live flow between Mawqoot elements">تدفّق حي بين عناصر Mawqoot</h3>
+          <div class="ecosystem-orbit" aria-hidden="true">
+            <span class="orbit-center"></span>
+            <span class="orbit-item orbit-1">Prayer</span>
+            <span class="orbit-item orbit-2">Quran</span>
+            <span class="orbit-item orbit-3">Mosque</span>
+            <span class="orbit-item orbit-4">Community</span>
+          </div>
+        </article>
+
+        <article class="future-card future-card--video reveal">
+          <span class="future-kicker" data-ar="مقدمة قصيرة" data-en="Short intro">مقدمة قصيرة</span>
+          <h3 data-ar="فيديو افتتاحي خفيف للتجربة" data-en="A lightweight intro video teaser">فيديو افتتاحي خفيف للتجربة</h3>
+          <div class="video-teaser" aria-hidden="true">
+            <span class="play-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7-11-7Z"/></svg>
+            </span>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -147,16 +369,27 @@
         <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 3.5A8 8 0 1 0 20.5 15 6.5 6.5 0 0 1 14.5 3.5Z"/><path d="m18.5 5 .6 1.4L20.5 7l-1.4.6-.6 1.4-.6-1.4L16.5 7l1.4-.6.6-1.4Z"/></svg></span>
         <span>Mawqoot</span>
       </a>
-      <p data-ar="رفيقك اليومي للصلاة والقرآن والأذكار." data-en="Your daily companion for prayer, Quran, and Athkar.">رفيقك اليومي للصلاة والقرآن والأذكار.</p>
+      <p data-ar="رفيقك اليومي للصلاة والقرآن والأذكار والمجتمع." data-en="Your daily companion for prayer, Quran, Athkar, and community.">رفيقك اليومي للصلاة والقرآن والأذكار والمجتمع.</p>
     </div>
     <nav class="footer-links" aria-label="Footer">
-      <a href="privacy.html" data-ar="سياسة الخصوصية" data-en="Privacy Policy">سياسة الخصوصية</a>
+      <a href="#story" data-ar="القصة" data-en="Story">القصة</a>
+      <a href="#features" data-ar="المميزات" data-en="Features">المميزات</a>
+      <a href="privacy.html" data-ar="الخصوصية" data-en="Privacy">الخصوصية</a>
       <a href="support.html" data-ar="الدعم" data-en="Support">الدعم</a>
+      <a href="terms.html" data-ar="الشروط" data-en="Terms">الشروط</a>
+    </nav>
+    <nav class="footer-social" aria-label="Social media">
+      <span class="footer-heading" data-ar="وسائل التواصل" data-en="Social media">وسائل التواصل</span>
+      <div class="social-pills">
+        <span>Instagram</span>
+        <span>X</span>
+        <span>YouTube</span>
+      </div>
     </nav>
   </div>
   <div class="footer-bottom">© 2026 Mawqoot</div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js?v=2"></script>
 </body>
 </html>
