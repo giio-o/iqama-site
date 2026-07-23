@@ -269,6 +269,11 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   background: #10151a; color: #fff; border: 1px solid rgba(255,255,255,0.1);
   padding: 0.7rem 1.4rem; gap: var(--space-3); box-shadow: var(--shadow-md);
 }
+.btn-store.is-disabled {
+  opacity: 0.7;
+  cursor: default;
+  pointer-events: none;
+}
 .btn-store:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
 .btn-store svg { width: 24px; height: 24px; flex-shrink: 0; }
 .btn-store .store-text { text-align: start; line-height: 1.25; }
