@@ -661,13 +661,26 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 
 /* ---------- Scroll indicator ---------- */
 .scroll-indicator {
-  position: absolute; inset-inline-start: 50%; bottom: var(--space-6);
+  /* Fixed, not absolute: the hero grows past 100svh once its content is
+     taller than the viewport, which parked this 150-370px below the fold at
+     most desktop sizes. Physical `left` on purpose too — translateX(-50%) is
+     not direction-aware, so pairing it with inset-inline-start pushed it
+     off-centre by half its own width in RTL. */
+  position: fixed; left: 50%; bottom: var(--space-6); z-index: 90;
   transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: var(--space-2);
   color: var(--text-tertiary); font-size: 0.75rem; font-weight: 700;
   letter-spacing: 0.02em; text-transform: uppercase;
   opacity: 0; animation: indicatorIn var(--dur-slow) var(--ease-out) 1.1s forwards;
-  transition: color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+  transition: color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out),
+    opacity var(--dur-base) var(--ease-out), visibility var(--dur-base) var(--ease-out);
+}
+/* Its job is done the moment the visitor scrolls. */
+.scroll-indicator.is-hidden {
+  animation: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 .scroll-indicator:hover { color: var(--primary-600); transform: translateX(-50%) translateY(3px); }
 :root[data-theme="dark"] .scroll-indicator:hover { color: var(--primary-300); }
@@ -694,7 +707,11 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   .scroll-indicator { opacity: 1; animation: none; }
   .scroll-indicator .mouse .dot { animation: none; opacity: 1; }
 }
-@media (max-height: 700px) {
+/* The hint only makes sense when the hero fills the viewport and the fold is
+   genuinely ambiguous. It's hidden on short viewports, and on mobile, where
+   the hero is content-height and the indicator would otherwise sit at the
+   bottom of a ~2000px section — over a thousand pixels below the fold. */
+@media (max-height: 700px), (max-width: 900px) {
   .scroll-indicator { display: none; }
 }
 

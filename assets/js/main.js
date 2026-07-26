@@ -72,9 +72,14 @@
   /* ---------- Nav scroll state ---------- */
   function initNavScroll() {
     var nav = document.querySelector('.nav');
-    if (!nav) return;
+    var indicator = document.querySelector('.scroll-indicator');
+    if (!nav && !indicator) return;
     var onScroll = function () {
-      nav.classList.toggle('is-scrolled', window.scrollY > 8);
+      var scrolled = window.scrollY > 8;
+      if (nav) nav.classList.toggle('is-scrolled', scrolled);
+      // The scroll hint is fixed to the viewport, so retire it once the
+      // visitor has done the thing it was asking for.
+      if (indicator) indicator.classList.toggle('is-hidden', scrolled);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
