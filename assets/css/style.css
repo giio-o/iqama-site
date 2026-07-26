@@ -666,19 +666,31 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
      most desktop sizes. Physical `left` on purpose too — translateX(-50%) is
      not direction-aware, so pairing it with inset-inline-start pushed it
      off-centre by half its own width in RTL. */
-  position: fixed; left: 50%; bottom: var(--space-6); z-index: 90;
+  position: fixed; left: 50%; z-index: 90;
+  bottom: calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
   transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: var(--space-2);
   color: var(--text-tertiary); font-size: 0.75rem; font-weight: 700;
   letter-spacing: 0.02em; text-transform: uppercase;
+  /* It floats over live content now, so it carries its own backdrop. */
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-full);
+  background: var(--surface-glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: var(--shadow-sm);
   opacity: 0; animation: indicatorIn var(--dur-slow) var(--ease-out) 1.1s forwards;
   transition: color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out),
     opacity var(--dur-base) var(--ease-out), visibility var(--dur-base) var(--ease-out);
 }
-/* Its job is done the moment the visitor scrolls. */
+/* Its job is done the moment the visitor scrolls.
+   !important rather than `animation: none` — killing the animation would drop
+   the forwards fill, so returning to the top would replay the 1.1s delay and
+   leave the pill blank. An important declaration outranks the animation while
+   the intro keyframes stay intact underneath. */
 .scroll-indicator.is-hidden {
-  animation: none;
-  opacity: 0;
+  opacity: 0 !important;
   visibility: hidden;
   pointer-events: none;
 }
@@ -707,12 +719,18 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   .scroll-indicator { opacity: 1; animation: none; }
   .scroll-indicator .mouse .dot { animation: none; opacity: 1; }
 }
-/* The hint only makes sense when the hero fills the viewport and the fold is
-   genuinely ambiguous. It's hidden on short viewports, and on mobile, where
-   the hero is content-height and the indicator would otherwise sit at the
-   bottom of a ~2000px section — over a thousand pixels below the fold. */
-@media (max-height: 700px), (max-width: 900px) {
-  .scroll-indicator { display: none; }
+/* Shown on every screen. Because it's fixed and overlays content, it shrinks
+   to a compact pill where vertical space is tight rather than disappearing. */
+@media (max-width: 640px), (max-height: 700px) {
+  .scroll-indicator {
+    flex-direction: row;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.7rem;
+    bottom: calc(var(--space-4) + env(safe-area-inset-bottom, 0px));
+  }
+  .scroll-indicator .mouse { width: 18px; height: 27px; padding-top: 5px; border-width: 1.5px; }
+  .scroll-indicator .mouse .dot { width: 3px; height: 6px; }
 }
 
 /* Sticky header would otherwise cover the top of any anchored target. */
