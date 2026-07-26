@@ -82,8 +82,9 @@ Source: `Mawqoot Website Enhancement Requirements.pdf`
 
 ## Link Wiring
 - [ ] Confirm official App Store URL
-- [ ] Confirm official Google Play URL
+- [x] Confirm official Google Play URL
 - [ ] Confirm official social profile links
+- [x] Mark iOS as not ready
 
 ## Deliverables
 - [x] Updated UI design

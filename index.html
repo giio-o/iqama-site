@@ -10,7 +10,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+<script>
+/* Applied before first paint so a saved theme/language never flashes the wrong one. */
+(function(){try{
+  var t=localStorage.getItem('iqamaTheme');
+  if(t){document.documentElement.setAttribute('data-theme',t);}
+  var l=localStorage.getItem('iqamaLang');
+  if(l){document.documentElement.lang=l;document.documentElement.dir=(l==='ar'?'rtl':'ltr');}
+}catch(e){}})();
+</script>
+
+<link rel="stylesheet" href="assets/css/style.css?v=4">
 </head>
 <body>
 <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى" data-en="Skip to content">تخطَّ إلى المحتوى</a>
@@ -23,7 +33,7 @@
       </span>
       <span>Mawqoot</span>
     </a>
-    <nav class="nav-links" aria-label="Primary">
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
       <a href="#story" data-ar="القصة" data-en="Story">القصة</a>
       <a href="#features" data-ar="المميزات" data-en="Features">المميزات</a>
       <a href="#trust" data-ar="الثقة" data-en="Trust">الثقة</a>
@@ -36,6 +46,9 @@
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
       </button>
       <button class="icon-btn lang-btn" id="langBtn" type="button">English</button>
+      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
+        <span class="bars" aria-hidden="true"><span></span></span>
+      </button>
     </div>
   </div>
 </header>
@@ -75,18 +88,18 @@
           </div>
         </div>
 
-        <div class="hero-demo-switcher" role="tablist" aria-label="Hero demo switcher">
-          <button class="demo-pill is-active" type="button" data-demo="prayer" data-ar="مواقيت الصلاة" data-en="Prayer Times">مواقيت الصلاة</button>
-          <button class="demo-pill" type="button" data-demo="quran" data-ar="القرآن الكريم" data-en="Quran">القرآن الكريم</button>
-          <button class="demo-pill" type="button" data-demo="mosque" data-ar="المساجد" data-en="Mosques">المساجد</button>
-          <button class="demo-pill" type="button" data-demo="community" data-ar="المجتمع" data-en="Community">المجتمع</button>
+        <div class="hero-demo-switcher" role="group" aria-label="Hero demo switcher">
+          <button class="demo-pill is-active" type="button" aria-pressed="true" data-demo="prayer" data-ar="مواقيت الصلاة" data-en="Prayer Times">مواقيت الصلاة</button>
+          <button class="demo-pill" type="button" aria-pressed="false" data-demo="quran" data-ar="القرآن الكريم" data-en="Quran">القرآن الكريم</button>
+          <button class="demo-pill" type="button" aria-pressed="false" data-demo="mosque" data-ar="المساجد" data-en="Mosques">المساجد</button>
+          <button class="demo-pill" type="button" aria-pressed="false" data-demo="community" data-ar="المجتمع" data-en="Community">المجتمع</button>
         </div>
 
         <div class="badges">
-          <a class="btn btn-store is-disabled" href="#" id="ios-badge" aria-disabled="true" aria-label="iOS not ready yet">
+          <span class="btn btn-store is-disabled" id="ios-badge" role="img" aria-label="iOS app not available yet">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.7 12.3c0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.6.9s-1.9-.9-3.1-.8c-1.6 0-3.1.9-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.7c1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.6-1-2.6-3.9Z"/><path d="M14.8 5c.6-.8 1-1.9.9-3-.9.1-2 .6-2.6 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2-.5 2.7-1.3Z"/></svg>
               <span class="store-text"><small data-ar="غير متاح الآن" data-en="Not ready yet">غير متاح الآن</small><span class="store-name">iOS</span></span>
-            </a>
+            </span>
             <a class="btn btn-store" href="https://play.google.com/store/apps/details?id=com.anonymous.iqama" id="android-badge" target="_blank" rel="noopener noreferrer" aria-label="Open Mawqoot on Google Play">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 3.5v17l14-8.5-14-8.5Z"/></svg>
               <span class="store-text"><small data-ar="احصل عليه من" data-en="Get it on">احصل عليه من</small><span class="store-name">Google Play</span></span>
@@ -348,10 +361,10 @@
         <h2 data-ar="مَوْقُوت في طريقه إليك" data-en="Mawqoot is on its way to you">مَوْقُوت في طريقه إليك</h2>
         <p data-ar="سيتوفر التطبيق قريباً على متجري آبل وجوجل بلاي." data-en="The app will be available soon on the App Store and Google Play.">سيتوفر التطبيق قريباً على متجري آبل وجوجل بلاي.</p>
         <div class="badges">
-          <a class="btn btn-store is-disabled" href="#" aria-disabled="true" aria-label="iOS not ready yet">
+          <span class="btn btn-store is-disabled" role="img" aria-label="iOS app not available yet">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.7 12.3c0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.6.9s-1.9-.9-3.1-.8c-1.6 0-3.1.9-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.7c1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.6-1-2.6-3.9Z"/><path d="M14.8 5c.6-.8 1-1.9.9-3-.9.1-2 .6-2.6 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2-.5 2.7-1.3Z"/></svg>
             <span class="store-text"><small data-ar="غير متاح الآن" data-en="Not ready yet">غير متاح الآن</small><span class="store-name">iOS</span></span>
-          </a>
+          </span>
           <a class="btn btn-store" href="https://play.google.com/store/apps/details?id=com.anonymous.iqama" target="_blank" rel="noopener noreferrer" aria-label="Open Mawqoot on Google Play">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 3.5v17l14-8.5-14-8.5Z"/></svg>
             <span class="store-text"><small data-ar="احصل عليه من" data-en="Get it on">احصل عليه من</small><span class="store-name">Google Play</span></span>
@@ -378,18 +391,10 @@
       <a href="support.html" data-ar="الدعم" data-en="Support">الدعم</a>
       <a href="terms.html" data-ar="الشروط" data-en="Terms">الشروط</a>
     </nav>
-    <nav class="footer-social" aria-label="Social media">
-      <span class="footer-heading" data-ar="وسائل التواصل" data-en="Social media">وسائل التواصل</span>
-      <div class="social-pills">
-        <span>Instagram</span>
-        <span>X</span>
-        <span>YouTube</span>
-      </div>
-    </nav>
   </div>
   <div class="footer-bottom">© 2026 Mawqoot</div>
 </footer>
 
-<script src="assets/js/main.js?v=2"></script>
+<script src="assets/js/main.js?v=4"></script>
 </body>
 </html>

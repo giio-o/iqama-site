@@ -40,6 +40,9 @@
       langBtn.setAttribute('aria-label', ar ? 'Switch to English' : 'التبديل إلى العربية');
     }
 
+    var navToggle = document.getElementById('navToggle');
+    if (navToggle) navToggle.setAttribute('aria-label', ar ? 'القائمة' : 'Menu');
+
     try { localStorage.setItem(STORAGE_LANG, lang); } catch (e) {}
   }
 
@@ -75,6 +78,45 @@
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  /* ---------- Mobile nav ---------- */
+  function initMobileNav() {
+    var toggle = document.getElementById('navToggle');
+    var panel = document.getElementById('navLinks');
+    if (!toggle || !panel) return;
+
+    function setOpen(open) {
+      panel.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    // Close after choosing a destination.
+    panel.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);
+    });
+
+    // Close on outside click / Escape.
+    document.addEventListener('click', function (e) {
+      if (!panel.contains(e.target) && !toggle.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panel.classList.contains('is-open')) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Reset when the layout returns to desktop.
+    var desktop = window.matchMedia('(min-width: 901px)');
+    var onChange = function (e) { if (e.matches) setOpen(false); };
+    if (desktop.addEventListener) desktop.addEventListener('change', onChange);
+    else if (desktop.addListener) desktop.addListener(onChange);
   }
 
   /* ---------- Scroll reveal ---------- */
@@ -180,13 +222,12 @@
     var countFill = document.getElementById('countdownFill');
     var futureCountdown = document.getElementById('futureCountdown');
     var futurePrayer = document.getElementById('futurePrayer');
-    document.body.setAttribute('data-countdown-init', countPrayer && countTime ? 'ready' : 'missing');
+    if (!countPrayer && !countTime && !futureCountdown) return;
 
     refreshPrayerCountdown = function () {
       var schedule = buildPrayerSchedule();
       var state = getPrayerState(new Date(), schedule);
       var lang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
-      document.body.setAttribute('data-countdown-next', state.next ? state.next.ar : 'none');
       if (countPrayer) setTextPair(countPrayer, state.next.ar, state.next.en, lang);
       if (futurePrayer) setTextPair(futurePrayer, state.next.ar, state.next.en, lang);
       if (countTime) replaceText(countTime, formatClock(state.remaining * 1000));
@@ -194,8 +235,19 @@
       if (countFill) countFill.style.width = Math.max(6, Math.min(100, (1 - (state.remaining / Math.max(state.total, 1))) * 100)) + '%';
     };
 
+    // Tick only while the tab is visible — no point burning a timer in a
+    // background tab, and the display is refreshed the moment it returns.
+    var timer = null;
+    function start() { if (!timer) timer = window.setInterval(refreshPrayerCountdown, 1000); }
+    function stop() { if (timer) { window.clearInterval(timer); timer = null; } }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { stop(); }
+      else { refreshPrayerCountdown(); start(); }
+    });
+
     refreshPrayerCountdown();
-    window.setInterval(refreshPrayerCountdown, 1000);
+    start();
   }
 
   function initHeroDemo() {
@@ -399,7 +451,9 @@
       button.addEventListener('click', function () {
         heroDemoState = button.getAttribute('data-demo') || 'prayer';
         demoButtons.forEach(function (other) {
-          other.classList.toggle('is-active', other === button);
+          var active = other === button;
+          other.classList.toggle('is-active', active);
+          other.setAttribute('aria-pressed', active ? 'true' : 'false');
         });
         refreshDemo();
       });
@@ -426,6 +480,7 @@
     if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
 
     initNavScroll();
+    initMobileNav();
     initReveal();
     initHeroCountdown();
     initHeroDemo();
